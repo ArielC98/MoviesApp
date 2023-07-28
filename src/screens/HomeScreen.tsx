@@ -10,7 +10,7 @@ const { width: windowWidth } = Dimensions.get('window')
 
 export const HomeScreen = () => {
 
-  const { peliculasEnCine, isLoading } = useMovies();
+  const { peliculasEnCine, peliculasPopulares, isLoading } = useMovies();
   const { top } = useSafeAreaInsets();
 
 
@@ -39,8 +39,7 @@ export const HomeScreen = () => {
             itemWidth={300}
           />
         </View>
-
-        <HorizontalSlider movies={peliculasEnCine} title='En Cine'/>
+        <HorizontalSlider movies={peliculasPopulares} title='Populares'/>
       </View>
     </ScrollView>
   )
