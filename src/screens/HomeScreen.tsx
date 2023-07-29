@@ -10,7 +10,7 @@ const { width: windowWidth } = Dimensions.get('window')
 
 export const HomeScreen = () => {
 
-  const { peliculasEnCine, peliculasPopulares, isLoading } = useMovies();
+  const { nowPlaying, popular, topRated, upcoming, isLoading } = useMovies();
   const { top } = useSafeAreaInsets();
 
 
@@ -33,13 +33,15 @@ export const HomeScreen = () => {
         >
 
           <Carousel
-            data={peliculasEnCine}
+            data={nowPlaying} //Se puede utilizar la notacion !nowPlaying en TypeScript para asegurar al compilador que el valor de la variable no será nulo en tiempo de ejecución y se puede poner poqrue arriba ya se hace la comprobacion de que habrá datos o sino el símbolo de carga no desaparece
             renderItem={({ item }: any) => <MoviePoster movie={item} />}
             sliderWidth={windowWidth}
             itemWidth={300}
           />
         </View>
-        <HorizontalSlider movies={peliculasPopulares} title='Populares'/>
+        <HorizontalSlider movies={popular} title='Populares'/>
+        <HorizontalSlider movies={topRated} title='Mejor calificación'/>
+        <HorizontalSlider movies={upcoming} title='Estrenos'/>
       </View>
     </ScrollView>
   )
