@@ -12,7 +12,7 @@ interface Props {
   width?: number;
 }
 
-export const MoviePoster = ({ height = 420, width = 300, movie }: Props) => {
+export const MoviePoster = ({ height = 410, width = 300, movie }: Props) => {
 
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
 
@@ -25,7 +25,9 @@ export const MoviePoster = ({ height = 420, width = 300, movie }: Props) => {
       style={{
         width,
         height,
-        marginHorizontal: 7
+        marginHorizontal: 2,
+        paddingBottom:5,
+        paddingHorizontal:7,
       }}>
       <View style={styles.imageContainer}>
         <Image
@@ -44,14 +46,6 @@ const styles = StyleSheet.create({
     borderRadius: 18
   },
   imageContainer: {
-    flex: 1,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.47,
-    shadowRadius: 4.65,
-    elevation: 10,
+    flex: 1
   }
 });

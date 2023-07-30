@@ -28,7 +28,7 @@ export const HomeScreen = () => {
       <View style={{ marginTop: top + 20 }}>
         <View
           style={{
-            height: 460
+            height: 430
           }}
         >
 
