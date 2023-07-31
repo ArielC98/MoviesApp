@@ -39,7 +39,7 @@ export const DetailScreen = ({ route }: Props) => {
       <View>
         {
           isLoading
-            ? <ActivityIndicator size={25} color='green' style={{ marginTop: 10 }} />
+            ? <ActivityIndicator size={25} color='grey' style={{ marginTop: 10 }} />
             : <MovieDetails movieFull={movieFull!} cast={cast}/>
         }
       </View>

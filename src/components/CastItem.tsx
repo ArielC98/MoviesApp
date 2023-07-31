@@ -7,17 +7,19 @@ interface Props {
 }
 
 export const CastItem = ({ actor }: Props) => {
-
   const uri= `https://image.tmdb.org/t/p/w500${actor.profile_path}`;
-
+  
   return (
-
+    
     <View style={styles.container}>
 
-      <Image
-        source={{uri}}
-        style={{width:50,height:50,borderRadius:10}}
-      />
+      {
+        actor.profile_path && 
+        <Image
+          source={{uri}}
+          style={{width:50,height:50,borderRadius:10}}
+        />
+      }
       
       <View>
         <Text style={{ fontSize: 16, fontWeight: '500' }}>
@@ -35,6 +37,8 @@ export const CastItem = ({ actor }: Props) => {
 const styles = StyleSheet.create({
   container:{
     flexDirection:'row',
+    marginBottom:10,
+    paddingRight:6 ,
     gap:10,
     marginTop:5,
     borderRadius:10,
@@ -46,6 +50,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity:0.24,
     textShadowRadius:7,
-    elevation:9
+    elevation:4,
+    marginRight:10
   }
 });
