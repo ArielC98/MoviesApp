@@ -7,6 +7,7 @@ import { StyleSheet } from 'react-native';
 import { Dimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useMovieDetails } from '../hooks/useMovieDetails';
 
 const screenHeight = Dimensions.get('screen').height;
 
@@ -16,6 +17,8 @@ export const DetailScreen = ({ route }: Props) => {
 
   const movie = route.params //Para acceder a las propiedades de la interfaz Movie
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+
+  useMovieDetails(movie.id);
 
   return (
     <ScrollView>
