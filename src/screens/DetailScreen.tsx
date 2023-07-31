@@ -18,7 +18,9 @@ export const DetailScreen = ({ route }: Props) => {
   const movie = route.params //Para acceder a las propiedades de la interfaz Movie
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
-  useMovieDetails(movie.id);
+  const {isLoading,cast,movieFull} = useMovieDetails(movie.id);
+  console.log(movieFull);
+  
 
   return (
     <ScrollView>
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.24,
     shadowRadius: 7,
     elevation: 9,
-    borderRadius:25
+    borderRadius: 25
   },
   imageBorder: {
     flex: 1,
