@@ -3,6 +3,7 @@ import { Text, View } from 'react-native'
 import { MovieFull } from '../interfaces/movieInterface'
 import { Cast } from '../interfaces/creditsInterface';
 import Icon from 'react-native-vector-icons/Ionicons';
+import currencyFormatter from 'currency-formatter';
 
 interface Props {
   movieFull: MovieFull;
@@ -14,7 +15,7 @@ export const MovieDetails = ({ movieFull, cast }: Props) => {
     <>
       {/* Detalles */}
       <View style={{ marginHorizontal: 20 }}>
-        <View style={{flexDirection:'row', gap:5, alignItems:'center'}}>
+        <View style={{ flexDirection: 'row', gap: 5, alignItems: 'center', marginTop: 5 }}>
 
           <Icon
             name="star-outline"
@@ -24,9 +25,26 @@ export const MovieDetails = ({ movieFull, cast }: Props) => {
 
           <Text>{movieFull.vote_average}</Text>
           <Text>
-            - { movieFull.genres.map(genre => genre.name).join(', ')}
+            - {movieFull.genres.map(genre => genre.name).join(', ')}
           </Text>
         </View>
+
+        {/* Sinopsis */}
+
+        <Text style={{ fontSize: 20, marginTop: 5, fontWeight: 'bold' }}>
+          Sinopsis
+        </Text>
+        <Text>
+          {movieFull.overview}
+        </Text>
+
+        <Text style={{ fontSize: 20, marginTop: 5, fontWeight: 'bold' }}>
+          Presupuesto
+        </Text>
+        <Text style={{ fontSize: 15 }}>
+          {currencyFormatter.format(movieFull.budget, { code: 'USD' })}
+        </Text>
+
       </View>
       {/* Casting */}
     </>
