@@ -1,6 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { ActivityIndicator, Text, View } from 'react-native'
+import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native'
 import { RootStackParams } from '../navigation/Navigation';
 import { Image } from 'react-native';
 import { StyleSheet } from 'react-native';
@@ -8,12 +8,13 @@ import { Dimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useMovieDetails } from '../hooks/useMovieDetails';
 import { MovieDetails } from '../components/MovieDetails';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const screenHeight = Dimensions.get('screen').height;
 
 interface Props extends StackScreenProps<RootStackParams, 'DetailScreen'> { };
 
-export const DetailScreen = ({ route }: Props) => {
+export const DetailScreen = ({ route,navigation }: Props) => {
 
   const movie = route.params //Para acceder a las propiedades de la interfaz Movie
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
@@ -36,13 +37,25 @@ export const DetailScreen = ({ route }: Props) => {
         <Text style={styles.title}>{movie.title}</Text>
         <Text style={styles.subTitle}>{movie.original_title}</Text>
       </View>
-      <View>
-        {
-          isLoading
-            ? <ActivityIndicator size={25} color='grey' style={{ marginTop: 10 }} />
-            : <MovieDetails movieFull={movieFull!} cast={cast}/>
-        }
-      </View>
+
+      {
+        isLoading
+          ? <ActivityIndicator size={25} color='grey' style={{ marginTop: 10 }} />
+          : <MovieDetails movieFull={movieFull!} cast={cast} />
+      }
+
+      {/* Boton para cerrar */}
+      <TouchableOpacity
+        onPress={()=>navigation.pop()}
+        style={styles.backButton}
+      >
+        <Icon
+          color="white"
+          name="arrow-back-outline"
+          size={50}
+        />
+      </TouchableOpacity>
+
     </ScrollView>
   )
 }
@@ -84,5 +97,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: 'bold'
+  },
+  backButton: {
+    position: 'absolute',
+    top:10,
+    left:5
   }
 })

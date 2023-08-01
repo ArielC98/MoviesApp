@@ -39,9 +39,9 @@ export const HomeScreen = () => {
             itemWidth={300}
           />
         </View>
+        <HorizontalSlider movies={upcoming} title='Estrenos'/>
         <HorizontalSlider movies={popular} title='Populares'/>
         <HorizontalSlider movies={topRated} title='Mejor calificación'/>
-        <HorizontalSlider movies={upcoming} title='Estrenos'/>
       </View>
     </ScrollView>
   )
